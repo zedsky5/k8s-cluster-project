@@ -1,0 +1,26 @@
+auth:
+  existingSecret: your-wordpress-secret
+
+mariadb:
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+service:
+  type: LoadBalancer
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+wordpress:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 5
+    targetCPU: 80
