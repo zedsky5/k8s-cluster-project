@@ -15,7 +15,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "your-terraform-state-bucket"
+    bucket = "my-bucket"
     key    = "eks/terraform.tfstate"
     region = "us-east-2"
   }
@@ -29,7 +29,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  name = "jamf-eks-vpc"
+  name = var.vpc_name
   cidr = "10.0.0.0/16"
 
   azs             = ["us-east-2a", "us-east-2b"]

@@ -1,0 +1,12 @@
+ingress-nginx:
+  controller:
+  replicaCount: 1
+  service:
+    type: LoadBalancer
+    targetPorts:
+      http: 80
+      https: 443
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 3

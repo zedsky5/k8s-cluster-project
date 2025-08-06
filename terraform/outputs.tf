@@ -3,7 +3,12 @@ output "eks_cluster_endpoint" {
   value       = module.eks.cluster_endpoint
 }
 
-output "wordpress_load_balancer_dns_name" {
-  description = "The DNS name of the WordPress Load Balancer."
-  value       = element(split("/", helm_release.wordpress.status.load_balancer.ingress[0].host), 1)
+output "eks_cluster_name" {
+  description = "The name of the EKS cluster."
+  value       = module.eks.cluster_name
+}
+
+output "kubeconfig" {
+  description = "The kubeconfig for the EKS cluster."
+  value       = module.eks.kubeconfig
 }

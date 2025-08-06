@@ -1,3 +1,9 @@
+variable "vpc_name" {
+  description = "The name of the VPC"
+  type        = string
+  default      = "jamf-eks-vpc"
+}
+
 variable "cluster_name" {
   description = "The name of the EKS cluster."
   type        = string
@@ -13,7 +19,7 @@ variable "cluster_version" {
 variable "worker_nodes_instance_type" {
   description = "The instance type for the EKS worker nodes."
   type        = string
-  default     = "t3.medium"
+  default     = "t3.micro"
 }
 
 variable "worker_nodes_desired_capacity" {
