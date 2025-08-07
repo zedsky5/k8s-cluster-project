@@ -1,19 +1,19 @@
 variable "vpc_name" {
   description = "The name of the VPC"
   type        = string
-  default      = "jamf-eks-vpc"
+  default      = "terra-vpc"
 }
 
 variable "cluster_name" {
   description = "The name of the EKS cluster."
   type        = string
-  default     = "jamf-eks-cluster"
+  default     = "terra-cluster"
 }
 
 variable "cluster_version" {
   description = "The Kubernetes version for the EKS cluster."
   type        = string
-  default     = "1.33"
+  default     = "1.30"
 }
 
 variable "worker_nodes_instance_type" {
