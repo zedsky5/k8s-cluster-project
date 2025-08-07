@@ -2,20 +2,15 @@ terraform {
   required_providers { 
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 5.0"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = ">= 2.0"
-    }
-    helm = {
-      source  = "hashicorp/helm"
-      version = ">= 2.0"
+      version = "2.38.0"
     }
   }
 
   backend "s3" {
-    bucket = "my-bucket"
+    bucket = "terra-helm-bucket"
     key    = "eks/terraform.tfstate"
     region = "us-east-2"
   }
@@ -27,7 +22,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.0.0"
+  version = "~> 5.0"
 
   name = var.vpc_name
   cidr = "10.0.0.0/16"
@@ -39,9 +34,9 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.15.0"
+  version = "~> 20.0"
 
-  cluster_name    = var.cluster_name
+  cluster_name = var.cluster_name
   cluster_version = var.cluster_version
 
   vpc_id     = module.vpc.vpc_id
